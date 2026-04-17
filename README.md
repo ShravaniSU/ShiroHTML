@@ -12,6 +12,12 @@ This project demonstrates how to build and deploy a static website using AWS EC2
 
 ---
 
+## 📌 Project Reference
+
+👉 https://roadmap.sh/projects/ec2-instance
+
+---
+
 ## 📌 About Shiro
 
 * 🐶 Name: Shiro
