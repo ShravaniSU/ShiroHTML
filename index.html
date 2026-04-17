@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Shiro 🐾</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%);
+            min-height: 100vh;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #00897b, #4db6ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            color: #333 !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, #00897b, #4db6ac);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #00897b 0%, #4db6ac 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn-cta {
+            background: white;
+            color: #00897b;
+            padding: 15px 40px;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section */
+        section {
+            padding: 80px 0;
+            scroll-behavior: smooth;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #00695c;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #00897b, #4db6ac);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .about-row {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .about-row img {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .about-row img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-row h2 {
+            color: #00897b;
+            margin-top: 30px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .about-row p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            animation: slideInRight 0.8s ease-out 0.2s both;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%);
+        }
+
+        .gallery-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #00897b, #4db6ac);
+            border-radius: 10px;
+        }
+
+        .gallery-item {
+            min-width: 350px;
+            height: 300px;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.3s ease;
+            cursor: grab;
+        }
+
+        .gallery-item:active {
+            cursor: grabbing;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: white;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4db6ac;
+            box-shadow: 0 0 0 0.2rem rgba(77, 182, 172, 0.25);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #00897b, #4db6ac);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 139, 123, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #00897b 0%, #4db6ac 100%);
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Back to top */
+        #topBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            background: linear-gradient(135deg, #00897b, #4db6ac);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #topBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            background: linear-gradient(135deg, #00897b, #4db6ac);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .btn-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .gallery-item {
+                min-width: 280px;
+                height: 250px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Shiro 🐾</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero d-flex align-items-center justify-content-center text-center" id="home">
+    <div class="hero-content">
+        <h1 class="display-4 fw-bold">Meet Shiro 🐾</h1>
+        <p class="lead">The most lovable Golden Retriever ever 💛</p>
+        <button class="btn btn-cta" onclick="document.getElementById('gallery').scrollIntoView({behavior: 'smooth'})">See My Photos</button>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="row align-items-center g-5 about-row">
+            <div class="col-md-6">
+                <img src="Snapchat-1491703759~2.jpg" class="img-fluid" alt="Shiro">
+            </div>
+            <div class="col-md-6">
+                <h2>About Shiro 🐶</h2>
+                <p>Shiro is a 4-year-old Golden Retriever with a heart of gold. He's incredibly friendly, always ready to play, and fiercely loyal to his family.</p>
+                <p>His playful antics and gentle nature make him the perfect companion. He fills our home with laughter, provides endless cuddles, and reminds us of the simple joys in life. Life is just better with him around 💛</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <div class="container">
+        <h2 class="mb-5">Gallery 📸</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="Snapchat-1491703759~2.jpg" alt="Shiro photo 1">
+            </div>
+            <div class="gallery-item">
+                <img src="Snapchat-431657621~2.jpg" alt="Shiro photo 2">
+            </div>
+            <div class="gallery-item">
+                <img src="Snapchat-974286400~2.jpg" alt="Shiro photo 3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2 class="mb-5">Contact 💌</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="contactForm">
+                    <input type="text" class="form-control mb-3" placeholder="Your Name" required>
+                    <input type="email" class="form-control mb-3" placeholder="Your Email" required>
+                    <textarea class="form-control mb-3" rows="4" placeholder="Message" required></textarea>
+                    <button type="submit" class="btn btn-submit w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <p class="mb-0">Made with ❤️ for Shiro</p>
+</footer>
+
+<!-- Back to top -->
+<button id="topBtn" class="btn-top">↑</button>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Back to top button
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
+    });
+
+    topBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Form validation
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("Message sent! 🐾 Thanks for reaching out!");
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
